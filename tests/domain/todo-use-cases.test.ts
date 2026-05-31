@@ -13,15 +13,15 @@ import { NotFoundError } from '../../src/domain/errors/domain-error.ts';
 class InMemoryTodoRepository implements TodoRepository {
   private todos: Map<string, Todo> = new Map();
 
-  async findAll(): Promise<Todo[]> {
-    return Array.from(this.todos.values());
+  findAll(): Promise<Todo[]> {
+    return Promise.resolve(Array.from(this.todos.values()));
   }
 
-  async findById(id: string): Promise<Todo | undefined> {
-    return this.todos.get(id);
+  findById(id: string): Promise<Todo | undefined> {
+    return Promise.resolve(this.todos.get(id));
   }
 
-  async create(input: { title: string; description?: string | undefined }): Promise<Todo> {
+  create(input: { title: string; description?: string | undefined }): Promise<Todo> {
     const todo: Todo = {
       id: crypto.randomUUID(),
       title: input.title,
@@ -31,10 +31,10 @@ class InMemoryTodoRepository implements TodoRepository {
       updatedAt: new Date().toISOString(),
     };
     this.todos.set(todo.id, todo);
-    return todo;
+    return Promise.resolve(todo);
   }
 
-  async update(
+  update(
     id: string,
     input: {
       title?: string | undefined;
@@ -52,11 +52,12 @@ class InMemoryTodoRepository implements TodoRepository {
       updatedAt: new Date().toISOString(),
     };
     this.todos.set(id, updated);
-    return updated;
+    return Promise.resolve(updated);
   }
 
-  async delete(id: string): Promise<void> {
+  delete(id: string): Promise<void> {
     this.todos.delete(id);
+    return Promise.resolve();
   }
 }
 

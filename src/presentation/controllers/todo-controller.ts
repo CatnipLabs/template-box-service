@@ -1,4 +1,4 @@
-import { type AuthStrategyContract, type Body, Box, type Param, z } from '@catniplabs/box';
+import { Box, z } from '@catniplabs/box';
 import type { CreateTodoDto, TodoResponse, UpdateTodoDto } from '../../application/dto/todo-dto.ts';
 import {
   CreateTodoUseCase,
