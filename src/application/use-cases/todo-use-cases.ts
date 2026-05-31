@@ -1,8 +1,8 @@
-import { Box } from "@catniplabs/box";
-import type { CreateTodoDto, UpdateTodoDto } from "../../application/dto/todo-dto.ts";
-import type { Todo } from "../../domain/entities/todo.ts";
-import { NotFoundError } from "../../domain/errors/domain-error.ts";
-import { DenoKvTodoRepository } from "../../infra/db/deno-kv-todo-repository.ts";
+import { Box } from '@catniplabs/box';
+import type { CreateTodoDto, UpdateTodoDto } from '../../application/dto/todo-dto.ts';
+import type { Todo } from '../../domain/entities/todo.ts';
+import { NotFoundError } from '../../domain/errors/domain-error.ts';
+import { DenoKvTodoRepository } from '../../infra/db/deno-kv-todo-repository.ts';
 
 @Box.Service({ deps: [DenoKvTodoRepository] })
 export class CreateTodoUseCase {
@@ -29,7 +29,7 @@ export class GetTodoByIdUseCase {
   public async execute(id: string): Promise<Todo> {
     const todo = await this.todoRepository.findById(id);
     if (!todo) {
-      throw new NotFoundError("Todo", id);
+      throw new NotFoundError('Todo', id);
     }
     return todo;
   }
@@ -51,7 +51,7 @@ export class DeleteTodoUseCase {
   public async execute(id: string): Promise<void> {
     const todo = await this.todoRepository.findById(id);
     if (!todo) {
-      throw new NotFoundError("Todo", id);
+      throw new NotFoundError('Todo', id);
     }
     await this.todoRepository.delete(id);
   }

@@ -1,5 +1,5 @@
-import type { CreateTodoDto, UpdateTodoDto } from "../dto/todo-dto.ts";
-import type { Todo } from "../../domain/entities/todo.ts";
+import type { CreateTodoDto, UpdateTodoDto } from '../dto/todo-dto.ts';
+import type { Todo } from '../../domain/entities/todo.ts';
 
 export abstract class TodoRepository {
   abstract findAll(): Promise<Todo[]>;
