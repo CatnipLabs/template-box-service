@@ -1,0 +1,24 @@
+# Logs
+*.log
+
+# Deno
+.deno/
+kv.db
+kv.db-shm
+kv.db-wal
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Environment
+.env
+.env.local

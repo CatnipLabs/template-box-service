@@ -1,0 +1,42 @@
+{
+  "name": "@catniplabs/template-box-service",
+  "version": "1.0.0",
+  "exports": "./src/main.ts",
+  "imports": {
+    "@catniplabs/box": "jsr:@catniplabs/box@^0.1.0",
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "zod": "npm:zod@^3.25.76"
+  },
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --allow-read --watch src/main.ts",
+    "start": "deno run --allow-net --allow-env --allow-read src/main.ts",
+    "test": "deno test --allow-net --allow-env --allow-read --allow-write",
+    "test:watch": "deno test --allow-net --allow-env --allow-read --allow-write --watch",
+    "fmt": "deno fmt",
+    "fmt:check": "deno fmt --check",
+    "lint": "deno lint",
+    "check": "deno check src/**/*.ts tests/**/*.ts",
+    "coverage": "deno test --allow-net --allow-env --allow-read --allow-write --coverage=coverage && deno coverage coverage --html"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "lint": {
+    "include": ["src/", "tests/"],
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "include": ["src/", "tests/", "*.md"],
+    "useTabs": false,
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve"
+  }
+}
